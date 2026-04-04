@@ -1,0 +1,544 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics and Telecommunication Engineering | JSCOE</title>
+    <!-- Google Fonts for customizable typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Swiper.js CSS for news slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* CSS Variables for Easy Customization */
+        :root {
+            --primary-color: #007bff; /* Change this for main blue theme */
+            --secondary-color: #003366; /* Darker blue for header/footer */
+            --bg-color: #f8f9fa; /* Light background */
+            --card-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 10px;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--bg-color);
+        }
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+  display: flex;
+  align-items: center;
+  
+  gap: 10px; /* space between logo and text */
+}
+
+.logo img {
+  height: 50px; /* adjust size as needed */
+  width: auto;
+  margin-left: 10px;
+}
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: flex-end; /* Align header options properly to the right */
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            padding: 10px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #ffc107; /* Added yellow color on hover */
+            color: #000; /* Dark text for contrast on yellow background */
+            border-radius: 5px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('{% static "main_app/images/ENTC_Department_Assemble.jpg" %}') center/cover; 
+            color: white;
+            position: relative;
+            font-size: small;
+            text-align: center;
+            padding: 1px 0 420px;
+            margin-top: 70px; /* Account for fixed header */
+        }
+        .hero h1 {
+            position: absolute;
+            top: 30px;
+            white-space: nowrap;
+            
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Added shadow for better readability over image */
+        }
+        .hero p {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Added shadow for better readability over image */
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .about-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+        .programs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .program-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        .program-card h3 {
+            color: var(--primary-color);
+        }
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .faculty-card {
+            background: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        .faculty-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .research-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+        .research-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+
+        /* News & Events Slider */
+        .news-section {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+        .swiper {
+            width: 100%;
+            height: 300px;
+        }
+        .swiper-slide {
+            text-align: center;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .news-card {
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            max-width: 400px;
+        }
+        .news-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+        .swiper-pagination-bullet {
+            background: var(--primary-color);
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .map-embed {
+            width: 100%;
+            height: 100px;
+            border: none;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        .contact-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+        .footer-section ul li a {
+            color: white;
+        }
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+        .social-links a {
+            color: rgb(212, 88, 88);
+            font-size: 1.5em;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .swiper {
+                height: 250px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="{% static 'main_app/images/JSCOE_logo.png' %}" alt="JSCOE logo">
+                <span>
+                    Jayawantrao Sawant College Of Engineering
+                </span></div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#news">News & Events</a></li>
+                        <li><a href="{% url 'faculty'}">Faculty</a></li>
+                        <li><a href="{% url 'login_page' %}">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Department Of Electronics and Telecommunication Engineering</h1>
+            <p></p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- About Section -->
+            <section id="about">
+                <h2>About the Department</h2>
+                <div class="about-grid">
+                    <div>
+                        <img src="https://source.unsplash.com/random/600x400/?electronics" alt="Department Lab">
+                        <h3>Vision</h3>
+                        <p>To be a globally recognized center of excellence in Electronics and Telecommunication Engineering education and research, fostering innovation and entrepreneurship.</p>
+                    </div>
+                    <div>
+                        <img src="https://source.unsplash.com/random/600x400/?telecom" alt="Telecom Research">
+                        <h3>Mission</h3>
+                        <p>To impart quality education, promote research in emerging technologies, and develop skilled professionals for industry and society.</p>
+                    </div>
+                </div>
+                <p>The Department of Electronics and Telecommunication Engineering at JSCOE offers undergraduate, postgraduate, and doctoral programs with a focus on cutting-edge areas like VLSI, Wireless Communications, Signal Processing, and IoT.</p>
+            </section>
+
+            <!-- Programs Section -->
+            <section id="programs">
+                <h2>Academic Programs</h2>
+                <div class="programs-list">
+                    <div class="program-card">
+                        <h3>B.Tech. ECE</h3>
+                        <p>4-year undergraduate program in Electronics and Communication Engineering.</p>
+                        <a href="https://vit.ac.in/schools/school-of-electronics-engineering/btech-ece">More Details</a>
+                    </div>
+                    <div class="program-card">
+                        <h3>M.Tech. VLSI</h3>
+                        <p>2-year postgraduate program specializing in Very Large Scale Integration.</p>
+                        <a href="https://vit.ac.in/schools/school-of-electronics-engineering/mtech-vlsi">More Details</a>
+                    </div>
+                    <div class="program-card">
+                        <h3>M.Tech. Communication Engg.</h3>
+                        <p>Advanced studies in wireless and optical communication systems.</p>
+                        <a href="https://vit.ac.in/schools/school-of-electronics-engineering/mtech-communication">More Details</a>
+                    </div>
+                    <div class="program-card">
+                        <h3>Ph.D. Programs</h3>
+                        <p>Research opportunities in electronics, telecom, and related fields.</p>
+                        <a href="https://vit.ac.in/schools/school-of-electronics-engineering/phd">More Details</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Section -->
+            <section id="research">
+                <h2>Research Areas</h2>
+                <p>Our department is at the forefront of research in electronics and telecom. Explore our labs and publications.</p>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <img src="https://source.unsplash.com/random/300x150/?vlsi" alt="VLSI Lab">
+                        <h3>VLSI Design Lab</h3>
+                        <p>Focus on chip design, FPGA prototyping, and semiconductor research.</p>
+                        <a href="#">View Publications</a>
+                    </div>
+                    <div class="research-card">
+                        <img src="https://source.unsplash.com/random/300x150/?wireless" alt="Wireless Lab">
+                        <h3>Wireless Communications Lab</h3>
+                        <p>Research in 5G, IoT, and antenna design.</p>
+                        <a href="#">View Projects</a>
+                    </div>
+                    <div class="research-card">
+                        <img src="https://source.unsplash.com/random/300x150/?signal" alt="Signal Processing Lab">
+                        <h3>Signal Processing Lab</h3>
+                        <p>Advanced algorithms for image, audio, and biomedical signals.</p>
+                        <a href="#">View Labs</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News & Events Section with Slider -->
+            <section id="news">
+                <h2>News & Events</h2>
+                <div class="news-section">
+                    <div class="swiper news-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="news-card">
+                                    <img src="https://source.unsplash.com/random/400x150/?seminar" alt="Seminar Event">
+                                    <h3>Tech Seminar 2023</h3>
+                                    <p>Join us for insights on 5G advancements. Date: Oct 15, 2023.</p>
+                                    <a href="#">Register</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="news-card">
+                                    <img src="https://source.unsplash.com/random/400x150/?workshop" alt="Workshop">
+                                    <h3>IoT Workshop</h3>
+                                    <p>Hands-on session on smart devices. Date: Nov 5, 2023.</p>
+                                    <a href="#">Details</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="news-card">
+                                    <img src="https://source.unsplash.com/random/400x150/?conference" alt="Conference">
+                                    <h3>International Conference</h3>
+                                    <p>Present your research at ECE Conf 2023.</p>
+                                    <a href="#">Submit Paper</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Faculty Section -->
+            <section id="faculty">
+                <h2>Alumni Reviews</h2>
+                <p>Our department boasts highly qualified aluminies with expertise in various domains.</p>
+                <div class="faculty-grid">
+                    <div class="faculty-card">
+                        <img src="https://source.unsplash.com/random/100x100/?professor" alt="Dr. A. Smith">
+                        <h4>A. Smith</h4>
+                        <p>2022 Batch</p>
+                        <p>Specialization: Wireless Communications</p>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://source.unsplash.com/random/100x100/?engineer" alt="Dr. B. Johnson">
+                        <h4>B. Johnson</h4>
+                        <p>2019 Batch</p>
+                        <p>Specialization: VLSI Design</p>
+                    </div>
+                    <div class="faculty-card">
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://source.unsplash.com/random/100x100/?engineer" alt="C. Rogers">
+                        <h4>C. Rogers</h4>
+                        <p>2021 Batch</p>
+                        <p>Specialization: System Design</p>
+                    </div>
+                    <div class="faculty-card">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-grid">
+                        <div>
+                            <h3>Department Address</h3>
+                            <p>Jayawantrao Sawant College of Engineering<br>
+                            Survey No. 58, Indrayani Nagar, Handewadi Road,<br>
+                            Hadapsar, Pune - 411028, Maharashtra, India</p>
+                            <p><strong>Phone:</strong> +91-20-26970000<br>
+                            <strong>Email:</strong> principal@jscoe.edu.in</p>
+                            
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2121.7321528917787!2d73.93474013718462!3d18.474172945892867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e9f58d2f4a65%3A0xdc08459c826bf8be!2sJSPM%20Group%20Of%20Institutes%2C%20Hadapsar!5e0!3m2!1sen!2sin!4v1762519325384!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

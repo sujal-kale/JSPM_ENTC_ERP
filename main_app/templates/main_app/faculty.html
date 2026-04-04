@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Faculty - JSCOE E&TC Department{% endblock %}
+{% block content %}
+  
+<link rel="stylesheet" href="{% static 'main_app/css/faculty.css'%}" />
+
+<body>
+     <!-- <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src = "images\JSCOE_logo.png" alt = "JSCOE logo">
+                <span>
+                    Jayawantrao Sawant College Of Engineering
+                </span></div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="/index/">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="research.htm;">Research</a></li>
+                        <li><a href="news.html">News & Events</a></li>
+                        <li><a href="/faculty/">Faculty</a></li>
+                        <li><a href="/login/">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header> -->
+  <h1 class="page-title">Meet Our Faculty!</h1>
+  <div class="faculty-container">
+
+    <!-- HOD -->
+    <div class="faculty-card hod-card">
+      <img src="{% static 'main/images/SMHambarde.jpg' %}" alt="Dr. S.M. Hambarde" class="faculty-img">
+      <h3>Dr. S.M. Hambarde</h3>
+      <p>Head Of Department</p>
+      <p>M.E.(E&amp;TC), Ph.D. (Electronics)</p>
+      <div class="hover-content">
+        <p>Expert in Embedded Systems, published 20+ papers.</p>
+        <a href="{% static 'teachers/SMHambarde.html' %}" class="profile-btn" target="_blank">View Profile</a>
+      </div>
+    </div>
+
+    <!-- Professors -->
+    
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/CAManjare.jpg' %}" alt="Dr. C.A. Manjare" class="faculty-img">
+      <h3>Dr. C.A. Manjare</h3>
+      <p>Professor</p>
+      <p>Ph.D. (Electronics & Communication)</p>
+      <div class="hover-content">
+        <p>Specializes in Wireless Communication and 5G Networks.</p>
+        <a href="teachers/CAManjare.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/DBSalunke.jpg' %}" alt="Dr. D.B. Salunke" class="faculty-img">
+      <h3>Dr. D.B. Salunke</h3>
+      <p>Professor</p>
+      <p>M.E.(Electronics), Ph.D.(Electronics)</p>
+      <div class="hover-content">
+        <p>Experienced in Analog Circuit Design & DSP Systems.</p>
+        <a href="teachers/DBSalunke.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/RKNavandar.jpg' %}" alt="Dr. R.K. Navandar" class="faculty-img">
+      <h3>Dr. R.K. Navandar</h3>
+      <p>Professor</p>
+      <p>M.Tech(Electronics), Ph.D.(E&amp;TC)</p>
+      <div class="hover-content">
+        <p>Focused on Wireless Networks and Satellite Systems.</p>
+        <a href="teachers/RKNavandar.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <!-- Associate Professors -->
+    <div class="faculty-card">
+      <img src="{% static 'main/images/VMSardar.jpg' %}" alt="Dr. V.M. Sardar" class="faculty-img">
+      <h3>Dr. V.M. Sardar</h3>
+      <p>Associate Professor</p>
+      <p>M.E. (Electronics), Ph.D.(Electronics)</p>
+      <div class="hover-content">
+        <p>Researcher in Biomedical Signal Processing and AI.</p>
+        <a href="teachers/VMSardar.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/PAKalyankar.jpg' %}" alt="Dr. P.A. Kalyankar" class="faculty-img">
+      <h3>Dr. P.A. Kalyankar</h3>
+      <p>Associate Professor</p>
+      <p>M.Tech(Digital Systems), Ph.D.(Electronics)</p>
+      <div class="hover-content">
+        <p>Works in Machine Learning and Image Processing.</p>
+        <a href="teachers/PAKalyankar.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <!-- Assistant Professors -->
+    <div class="faculty-card">
+      <img src="{% static 'main/images/DGIngale.jpg' %}" alt="Prof. D.G. Ingale" class="faculty-img">
+      <h3>Prof. D.G. Ingale</h3>
+      <p>Assistant Professor</p>
+      <p>M.E.(Electronics), Ph.D. Pursuing</p>
+      <div class="hover-content">
+        <p>Focus on Microcontrollers and Real-Time Systems.</p>
+        <a href="teachers/DGIngale.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/SMPange.jpg' %}" alt="Prof. S.M. Pange" class="faculty-img">
+      <h3>Prof. S.M. Pange</h3>
+      <p>Assistant Professor</p>
+      <p>M.E. (Electronics), Ph.D. Pursuing</p>
+      <div class="hover-content">
+        <p>Passionate about Optical Communication and IoT.</p>
+        <a href="teachers/SMPange.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/VPPatil.jpg' %}" alt="Prof. V.P. Patil" class="faculty-img">
+      <h3>Prof. V.P. Patil</h3>
+      <p>Assistant Professor</p>
+      <p>M.E. (E&amp;TC)</p>
+      <div class="hover-content">
+        <p>Expertise in Communication Systems and Signal Theory.</p>
+        <a href="teachers/VPPatil.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/SVMalewar.jpg' %}" alt="Prof. S.V. Malewar" class="faculty-img">
+      <h3>Prof. S.V. Malewar</h3>
+      <p>Assistant Professor</p>
+      <p>M.E. (Electronics)</p>
+      <div class="hover-content">
+        <p>Specialist in Robotics and Control Systems.</p>
+        <a href="teachers/SVMalewar.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/BSBiradar.jpg' %}" alt="Prof. B.S. Biradar" class="faculty-img">
+      <h3>Prof. B.S. Biradar</h3>
+      <p>Assistant Professor</p>
+      <p>M.Tech(Communication Systems)</p>
+      <div class="hover-content">
+        <p>Works on VLSI Architectures and Digital Systems.</p>
+        <a href="teachers/BSBiradar.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="faculty-card">
+      <img src="{% static 'main/images/SSMahulkar.jpg' %}" alt="Prof. S.S. Mahulkar" class="faculty-img">
+      <h3>Prof. S.S. Mahulkar</h3>
+      <p>Assistant Professor</p>
+      <p>M.E. (Digital Electronics)</p>
+      <div class="hover-content">
+        <p>Interested in Signal Analysis and Audio Processing.</p>
+        <a href="teachers/SSMahulkar.html" class="profile-btn">View Profile</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+{% endblock %}
