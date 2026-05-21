@@ -1,0 +1,359 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #004d7a;
+}
+
+.faculty-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.faculty-card {
+  background-color: #ffffff;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  padding: 20px;
+  height: 240px;
+}
+
+.faculty-card:hover {
+  background-color: #004d7a;
+  color: white;
+  transform: scale(1.02);
+}
+
+.faculty-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 4px solid #004d7a;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: opacity 0.3s ease;
+}
+
+.faculty-card h3,
+.faculty-card p {
+  color: #222;
+  margin: 5px 0;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.faculty-card:hover h3 {
+ font-size: 20px;
+  color: white;
+}
+
+.faculty-card:hover .faculty-img,
+.faculty-card:hover p:nth-of-type(2),
+.faculty-card:hover p:nth-of-type(1),
+.faculty-card:hover p:nth-of-type(3) {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.hover-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 20px;
+}
+
+.faculty-card:hover .hover-content {
+  display: block;
+  opacity: 1;
+}
+
+.profile-btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #ffc107;
+  color: #004d7a;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-btn:hover {
+  background-color: #e0a800;
+  color: white;
+}
+
+.hod-card {
+  border: 3px solid #d17b00;
+  box-shadow: 0 0 25px rgba(209, 123, 0, 0.4);
+  background-color: #fff;
+  position: relative;
+}
+
+.hod-card .faculty-img {
+  border: 4px solid #d17b00;
+}
+
+.hod-card::before {
+  content: "HOD";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #d17b00;
+  color: white;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .faculty-container {
+    flex-direction: column;
+    align-items: center;
+  }body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #004d7a;
+}
+
+.faculty-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.faculty-card {
+  background-color: #ffffff;
+  width: 250px;
+  height: 340px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.faculty-card:hover {
+  background-color: #004d7a;
+  color: white;
+  transform: scale(1.02);
+}
+
+.faculty-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 4px solid #004d7a;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: opacity 0.3s ease;
+}
+
+.faculty-card h3,
+.faculty-card p {
+  color: #222;
+  margin: 5px 0;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.faculty-card:hover h3 {
+  color: white;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.faculty-card:hover .faculty-img,
+.faculty-card:hover p:nth-of-type(2),
+.faculty-card:hover p:nth-of-type(1),
+.faculty-card:hover p:nth-of-type(3) {
+  display: none !important;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.hover-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: center;
+}
+
+.faculty-card:hover .hover-content {
+  display: block;
+  opacity: 1;
+}
+
+.profile-btn {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #ffc107;
+  color: #004d7a;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.profile-btn:hover {
+  background-color: #e0a800;
+  color: white;
+}
+
+.hod-card {
+  border: 3px solid #d17b00;
+  box-shadow: 0 0 25px rgba(209, 123, 0, 0.4);
+  background-color: #fff;
+  position: relative;
+}
+
+.hod-card .faculty-img {
+  border: 4px solid #d17b00;
+}
+
+.hod-card::before {
+  content: "HOD";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #d17b00;
+  color: white;
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .faculty-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .faculty-card {
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
+  .faculty-card {
+    width: 90%;
+    max-width: 300px;
+  }
+}
+:root {
+            --primary-color: #007bff; /* Change this for main blue theme */
+            --secondary-color: #003366; /* Darker blue for header/footer */
+            --bg-color: #f8f9fa; /* Light background */
+            --card-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 10px;
+        }
+
+.header {
+            background-color: var(--secondary-color);;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+  display: flex;
+  align-items: center;
+  
+  gap: 10px; /* space between logo and text */
+}
+
+.logo img {
+  height: 50px; /* adjust size as needed */
+  width: auto;
+  margin-left: 10px;
+}
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: flex-end; /* Align header options properly to the right */
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            padding: 10px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #ffc107; /* Added yellow color on hover */
+            color: #000; /* Dark text for contrast on yellow background */
+            border-radius: 5px;
+        }
