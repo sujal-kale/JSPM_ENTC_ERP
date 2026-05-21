@@ -170,7 +170,16 @@
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" id="last_name" required />
                 </div>
+                <div class="form-group" id="roll_no_group">
+    <label for="roll_no">Roll Number</label>
 
+    <input
+        type="text"
+        name="roll_no"
+        id="roll_no"
+        placeholder="Enter Roll Number"
+    />
+</div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required />
@@ -236,7 +245,8 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
+
         (function(){
             const userType = document.getElementById('user_type');
             const sessionGroup = document.getElementById('session_group');
@@ -252,6 +262,68 @@
             userType.addEventListener('change', toggleFields);
             toggleFields();
         })();
-    </script>
+    </script> -->
+<script>
+    (function(){
+
+        const userType =
+            document.getElementById('user_type');
+
+        const sessionGroup =
+            document.getElementById('session_group');
+
+        const rollNoGroup =
+            document.getElementById('roll_no_group');
+
+        const courseGroup =
+            document.getElementById('course').parentElement;
+
+        function toggleFields(){
+
+            // STUDENT
+            if(userType.value === '3'){
+
+                sessionGroup.style.display = 'block';
+
+                rollNoGroup.style.display = 'block';
+
+                courseGroup.style.display = 'block';
+
+                document.getElementById('roll_no')
+                    .setAttribute('required', true);
+
+                document.getElementById('session')
+                    .setAttribute('required', true);
+
+                document.getElementById('course')
+                    .setAttribute('required', true);
+            }
+
+            // STAFF
+            else{
+
+                sessionGroup.style.display = 'none';
+
+                rollNoGroup.style.display = 'none';
+
+                courseGroup.style.display = 'block';
+
+                document.getElementById('roll_no')
+                    .removeAttribute('required');
+
+                document.getElementById('session')
+                    .removeAttribute('required');
+            }
+        }
+
+        userType.addEventListener(
+            'change',
+            toggleFields
+        );
+
+        toggleFields();
+
+    })();
+</script>
 </body>
 </html>

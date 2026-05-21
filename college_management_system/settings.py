@@ -98,18 +98,27 @@ WSGI_APPLICATION = 'college_management_system.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'django',
-    #     'USER': os.environ.get('DB_USER'),
-    #     'PASSWORD': os.environ.get('DB_PASS'),
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3307'
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+
+        'NAME': 'neondb',
+
+        'USER': 'neondb_owner',
+
+        'PASSWORD': 'npg_cw27SRIlGFCD',
+
+        'HOST': 'ep-hidden-glitter-aof8nu5r-pooler.c-2.ap-southeast-1.aws.neon.tech',
+
+        'PORT': '5432',
+
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 
 

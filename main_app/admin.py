@@ -7,7 +7,7 @@ from .models import *
 class UserModel(UserAdmin):
     ordering = ('email',)
 
-
+admin.site.register(StudentMaster)
 admin.site.register(CustomUser, UserModel)
 admin.site.register(Staff)
 admin.site.register(Student)

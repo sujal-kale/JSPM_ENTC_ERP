@@ -7,8 +7,15 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from .EmailBackend import EmailBackend
-from .models import Attendance, Session, Subject
-
+# from .models import Attendance, Session, Subject
+from .models import (
+    CustomUser,
+    Student,
+    Staff,
+    Course,
+    Session,
+    StudentMaster
+)
 # Create your views here.
 def home(request):
     return render(request, 'main_app/home.html')
@@ -24,7 +31,7 @@ def login_page(request):
     return render(request, 'main_app/login.html')
 
 
-def register(request):
+# def register(request):
     from django.core.files.storage import FileSystemStorage
     from .models import CustomUser, Student, Staff, Course, Session
     if request.method == 'POST':
@@ -88,6 +95,137 @@ def register(request):
     sessions = Session.objects.all()
     return render(request, 'main_app/register.html', {'courses': courses, 'sessions': sessions})
 
+def register(request):
+    from django.core.files.storage import FileSystemStorage
+
+    if request.method == 'POST':
+
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        gender = request.POST.get('gender')
+        address = request.POST.get('address')
+
+        user_type = request.POST.get('user_type')
+
+        course_id = request.POST.get('course') or None
+        session_id = request.POST.get('session') or None
+
+        roll_no = request.POST.get('roll_no')
+
+        # CHECK ONLY FOR STUDENTS
+        if user_type == '3':
+
+            student_master = StudentMaster.objects.filter(
+                roll_no=roll_no,
+                email=email,
+                is_registered=False
+            ).first()
+
+            if not student_master:
+                messages.error(
+                    request,
+                    "You are not authorized to register"
+                )
+                return redirect(reverse('register'))
+
+        # HANDLE PROFILE PIC
+        profile_pic = request.FILES.get('profile_pic')
+
+        try:
+
+            if profile_pic:
+                fs = FileSystemStorage()
+
+                filename = fs.save(
+                    profile_pic.name,
+                    profile_pic
+                )
+
+                profile_pic_url = fs.url(filename)
+
+            else:
+                profile_pic_url = None
+
+            extra = {
+                'first_name': first_name or '',
+                'last_name': last_name or '',
+                'gender': gender or 'M',
+                'address': address or '',
+                'user_type': user_type or '3'
+            }
+
+            if profile_pic_url:
+                extra['profile_pic'] = profile_pic_url
+
+            # CREATE USER
+            user = CustomUser.objects.create_user(
+                email=email,
+                password=password,
+                **extra
+            )
+
+            # STUDENT
+            if user.user_type == '3':
+
+                student = Student.objects.get(admin=user)
+
+                student.course = student_master.course
+                student.session = student_master.session
+                student.roll_no = student_master.roll_no
+
+                student.save()
+
+                # MARK AS REGISTERED
+                student_master.is_registered = True
+                student_master.save()
+
+            # STAFF
+            elif user.user_type == '2':
+
+                if course_id:
+
+                    staff = Staff.objects.get(admin=user)
+
+                    staff.course = Course.objects.get(
+                        id=course_id
+                    )
+
+                    staff.save()
+
+            # AUTO LOGIN
+            login(request, user)
+
+            if user.user_type == '2':
+                return redirect(reverse('staff_home'))
+
+            else:
+                return redirect(reverse('student_home'))
+
+        except Exception as e:
+
+            messages.error(
+                request,
+                f"Registration failed: {e}"
+            )
+
+            return redirect(reverse('home'))
+
+    courses = Course.objects.all()
+
+    sessions = Session.objects.all()
+
+    return render(
+        request,
+        'main_app/register.html',
+        {
+            'courses': courses,
+            'sessions': sessions
+        }
+    )
 
 def doLogin(request, **kwargs):
     if request.method != 'POST':
