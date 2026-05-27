@@ -1,0 +1,205 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">{{page_title}}</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Timeline View -->
+                        <div class="timeline">
+                            <!-- Event 1 -->
+                            <div class="time-label">
+                                <span class="bg-success">June 2026</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-calendar-day bg-primary"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 2:00 PM</span>
+                                    <h3 class="timeline-header"><a href="#">Annual Alumni Reunion</a></h3>
+                                    <div class="timeline-body">
+                                        <p><strong>Date:</strong> June 15, 2026</p>
+                                        <p><strong>Location:</strong> College Auditorium</p>
+                                        <p><strong>Description:</strong> Join us for our annual alumni reunion where you can reconnect with classmates, meet current students, and celebrate our alma mater's achievements.</p>
+                                        <button class="btn btn-primary btn-sm">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 2 -->
+                            <div>
+                                <i class="fas fa-graduation-cap bg-success"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 10:00 AM</span>
+                                    <h3 class="timeline-header"><a href="#">Commencement Ceremony</a></h3>
+                                    <div class="timeline-body">
+                                        <p><strong>Date:</strong> June 20, 2026</p>
+                                        <p><strong>Location:</strong> College Grounds</p>
+                                        <p><strong>Description:</strong> Celebrate with the graduating class and be part of their journey as they step into the world.</p>
+                                        <button class="btn btn-primary btn-sm">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 3 -->
+                            <div class="time-label">
+                                <span class="bg-warning">July 2026</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-handshake bg-info"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 3:00 PM</span>
+                                    <h3 class="timeline-header"><a href="#">Career & Networking Seminar</a></h3>
+                                    <div class="timeline-body">
+                                        <p><strong>Date:</strong> July 10, 2026</p>
+                                        <p><strong>Location:</strong> Conference Room</p>
+                                        <p><strong>Description:</strong> Connect with industry leaders and explore career development opportunities. Learn from successful alumni in various fields.</p>
+                                        <button class="btn btn-primary btn-sm">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 4 -->
+                            <div>
+                                <i class="fas fa-heart bg-danger"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 6:00 PM</span>
+                                    <h3 class="timeline-header"><a href="#">Fundraising Gala Dinner</a></h3>
+                                    <div class="timeline-body">
+                                        <p><strong>Date:</strong> July 25, 2026</p>
+                                        <p><strong>Location:</strong> Grand Ballroom</p>
+                                        <p><strong>Description:</strong> An elegant evening to celebrate our alma mater and contribute to its continued excellence.</p>
+                                        <button class="btn btn-primary btn-sm">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 5 -->
+                            <div class="time-label">
+                                <span class="bg-info">August 2026</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-users bg-success"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 1:00 PM</span>
+                                    <h3 class="timeline-header"><a href="#">Alumni Sports Day</a></h3>
+                                    <div class="timeline-body">
+                                        <p><strong>Date:</strong> August 5, 2026</p>
+                                        <p><strong>Location:</strong> Sports Complex</p>
+                                        <p><strong>Description:</strong> Relive your college days with friendly sports competitions, games, and fun activities with fellow alumni.</p>
+                                        <button class="btn btn-primary btn-sm">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <i class="fas fa-lightbulb bg-primary"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 4:00 PM</span>
+                                    <h3 class="timeline-header"><a href="#">Entrepreneurship Workshop</a></h3>
+                                    <div class="timeline-body">
+                                        <p><strong>Date:</strong> August 20, 2026</p>
+                                        <p><strong>Location:</strong> Innovation Center</p>
+                                        <p><strong>Description:</strong> Learn from successful alumni entrepreneurs about starting and scaling businesses.</p>
+                                        <button class="btn btn-primary btn-sm">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .timeline {
+        position: relative;
+        padding: 20px 0;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: #ddd;
+    }
+
+    .time-label {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .time-label > span {
+        padding: 5px 15px;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .timeline > div {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .timeline > div > i {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        z-index: 1;
+    }
+
+    .timeline-item {
+        margin-left: 50%;
+        padding: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: -20px;
+    }
+
+    .timeline-item .time {
+        display: block;
+        margin-bottom: 10px;
+        color: #999;
+        font-size: 12px;
+    }
+
+    .timeline-item h3 {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    .timeline-item .timeline-body {
+        margin: 15px 0;
+    }
+</style>
+{% endblock content %}

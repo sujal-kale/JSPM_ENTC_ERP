@@ -1,0 +1,291 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Feedback Form -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Submit Your {{page_title}}</h3>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="feedbackCategory">Feedback Category</label>
+                                <select class="form-control" id="feedbackCategory" required>
+                                    <option value="">-- Select Category --</option>
+                                    <option value="general">General Feedback</option>
+                                    <option value="academic">Academic Programs</option>
+                                    <option value="infrastructure">Infrastructure & Facilities</option>
+                                    <option value="placement">Placement & Career</option>
+                                    <option value="alumni">Alumni Portal</option>
+                                    <option value="event">Events & Activities</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="complaint">Complaint</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="feedbackSubject">Subject</label>
+                                <input type="text" class="form-control" id="feedbackSubject" placeholder="Brief subject of your feedback" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="feedbackRating">How would you rate your college experience?</label>
+                                <div id="feedbackRating">
+                                    <div class="rating-stars">
+                                        <i class="far fa-star star-icon" data-rating="1"></i>
+                                        <i class="far fa-star star-icon" data-rating="2"></i>
+                                        <i class="far fa-star star-icon" data-rating="3"></i>
+                                        <i class="far fa-star star-icon" data-rating="4"></i>
+                                        <i class="far fa-star star-icon" data-rating="5"></i>
+                                    </div>
+                                    <input type="hidden" id="ratingValue" name="rating" value="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="feedbackText">Your Feedback</label>
+                                <textarea class="form-control" id="feedbackText" rows="5" placeholder="Please share your detailed feedback..." required></textarea>
+                                <small class="form-text text-muted">Maximum 500 characters</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="feedbackAttachment">Attach a File (Optional)</label>
+                                <input type="file" class="form-control-file" id="feedbackAttachment">
+                                <small class="form-text text-muted">Accepted formats: PDF, DOC, JPG, PNG (Max 5MB)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactMe">
+                                    <input type="checkbox" id="contactMe" name="contact_permission">
+                                    You can contact me regarding this feedback
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="anonymous">
+                                    <input type="checkbox" id="anonymous" name="anonymous_feedback">
+                                    Submit feedback anonymously
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback History -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Your Feedback History</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Subject</th>
+                                        <th>Rating</th>
+                                        <th>Status</th>
+                                        <th>Response</th>
+                                        <th>Submitted On</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Academic Programs</td>
+                                        <td>Excellent curriculum and teaching methods</td>
+                                        <td>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                        </td>
+                                        <td><span class="badge badge-success">Reviewed</span></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#responseModal">
+                                                View
+                                            </button>
+                                        </td>
+                                        <td>2025-05-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Infrastructure</td>
+                                        <td>Library resources need to be updated</td>
+                                        <td>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </td>
+                                        <td><span class="badge badge-warning">Under Review</span></td>
+                                        <td>-</td>
+                                        <td>2025-04-15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Placement</td>
+                                        <td>Great placement assistance and support</td>
+                                        <td>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                        </td>
+                                        <td><span class="badge badge-success">Reviewed</span></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#responseModal">
+                                                View
+                                            </button>
+                                        </td>
+                                        <td>2025-03-20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>General Feedback</td>
+                                        <td>Overall satisfied with the college experience</td>
+                                        <td>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="far fa-star"></i>
+                                        </td>
+                                        <td><span class="badge badge-success">Reviewed</span></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#responseModal">
+                                                View
+                                            </button>
+                                        </td>
+                                        <td>2025-02-28</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Response Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Response to Your Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Your Feedback:</strong></p>
+                <p class="text-muted">Excellent curriculum and teaching methods</p>
+                <hr>
+                <p><strong>Response from Administration:</strong></p>
+                <p>Thank you for your positive feedback. We are committed to maintaining high standards in our academic programs and continuously improving our teaching methodologies. Your appreciation motivates us to work harder.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .rating-stars {
+        font-size: 2em;
+        margin: 10px 0;
+    }
+
+    .star-icon {
+        cursor: pointer;
+        color: #ddd;
+        margin-right: 10px;
+        transition: all 0.2s ease;
+    }
+
+    .star-icon:hover,
+    .star-icon.active {
+        color: #ffc107;
+    }
+
+    .border-left-primary {
+        border-left: 4px solid #007bff;
+    }
+</style>
+
+<script>
+    // Star rating functionality
+    document.querySelectorAll('.star-icon').forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.dataset.rating;
+            document.getElementById('ratingValue').value = rating;
+            
+            document.querySelectorAll('.star-icon').forEach(s => {
+                s.classList.remove('active');
+                if (s.dataset.rating <= rating) {
+                    s.classList.add('active');
+                    s.classList.remove('far');
+                    s.classList.add('fas');
+                } else {
+                    s.classList.remove('fas');
+                    s.classList.add('far');
+                }
+            });
+        });
+
+        star.addEventListener('mouseenter', function() {
+            const rating = this.dataset.rating;
+            document.querySelectorAll('.star-icon').forEach(s => {
+                if (s.dataset.rating <= rating) {
+                    s.style.color = '#ffc107';
+                } else {
+                    s.style.color = '#ddd';
+                }
+            });
+        });
+    });
+
+    // Reset rating on mouse leave
+    document.getElementById('feedbackRating').addEventListener('mouseleave', function() {
+        const rating = document.getElementById('ratingValue').value;
+        document.querySelectorAll('.star-icon').forEach(s => {
+            if (s.dataset.rating <= rating) {
+                s.style.color = '#ffc107';
+            } else {
+                s.style.color = '#ddd';
+            }
+        });
+    });
+</script>
+{% endblock content %}

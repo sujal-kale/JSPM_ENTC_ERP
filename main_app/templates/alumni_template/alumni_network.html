@@ -1,0 +1,220 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Column: Directory -->
+            <div class="col-md-8">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Alumni Directory</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search alumni...">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control">
+                                    <option>Filter by Batch</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Alumni Cards -->
+                        <div class="row">
+                            <!-- Alumni Member 1 -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card border-primary">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <img src="{% static 'plugins/jquery/images/default-avatar.png' %}" alt="Avatar" class="rounded-circle mr-3" width="50">
+                                            <div class="flex-grow-1">
+                                                <h5 class="card-title mb-1">John Doe</h5>
+                                                <p class="card-text text-muted small">Batch: 2020</p>
+                                                <p class="card-text"><strong>Position:</strong> Senior Software Engineer</p>
+                                                <p class="card-text"><strong>Company:</strong> Tech Solutions Inc.</p>
+                                                <p class="card-text"><strong>Location:</strong> New York, USA</p>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-primary btn-sm">Connect</button>
+                                                    <button class="btn btn-secondary btn-sm">Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alumni Member 2 -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card border-success">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <img src="{% static 'plugins/jquery/images/default-avatar.png' %}" alt="Avatar" class="rounded-circle mr-3" width="50">
+                                            <div class="flex-grow-1">
+                                                <h5 class="card-title mb-1">Jane Smith</h5>
+                                                <p class="card-text text-muted small">Batch: 2019</p>
+                                                <p class="card-text"><strong>Position:</strong> Business Analyst</p>
+                                                <p class="card-text"><strong>Company:</strong> Global Consulting</p>
+                                                <p class="card-text"><strong>Location:</strong> Chicago, USA</p>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-primary btn-sm">Connect</button>
+                                                    <button class="btn btn-secondary btn-sm">Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alumni Member 3 -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card border-warning">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <img src="{% static 'plugins/jquery/images/default-avatar.png' %}" alt="Avatar" class="rounded-circle mr-3" width="50">
+                                            <div class="flex-grow-1">
+                                                <h5 class="card-title mb-1">Michael Johnson</h5>
+                                                <p class="card-text text-muted small">Batch: 2021</p>
+                                                <p class="card-text"><strong>Position:</strong> Product Manager</p>
+                                                <p class="card-text"><strong>Company:</strong> Innovation Labs</p>
+                                                <p class="card-text"><strong>Location:</strong> San Francisco, USA</p>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-primary btn-sm">Connect</button>
+                                                    <button class="btn btn-secondary btn-sm">Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alumni Member 4 -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card border-danger">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start">
+                                            <img src="{% static 'plugins/jquery/images/default-avatar.png' %}" alt="Avatar" class="rounded-circle mr-3" width="50">
+                                            <div class="flex-grow-1">
+                                                <h5 class="card-title mb-1">Sarah Williams</h5>
+                                                <p class="card-text text-muted small">Batch: 2020</p>
+                                                <p class="card-text"><strong>Position:</strong> Marketing Director</p>
+                                                <p class="card-text"><strong>Company:</strong> Brand Ventures</p>
+                                                <p class="card-text"><strong>Location:</strong> Boston, USA</p>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-primary btn-sm">Connect</button>
+                                                    <button class="btn btn-secondary btn-sm">Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Network Info -->
+            <div class="col-md-4">
+                <!-- Mentorship Program -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Mentorship Program</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Connect with experienced mentors to guide your career growth.</p>
+                        <button class="btn btn-primary btn-block">Find a Mentor</button>
+                        <button class="btn btn-secondary btn-block mt-2">Become a Mentor</button>
+                    </div>
+                </div>
+
+                <!-- Networking Groups -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Networking Groups</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <strong>Tech Professionals</strong>
+                                <span class="badge badge-primary float-right">245 members</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <strong>Finance & Banking</strong>
+                                <span class="badge badge-primary float-right">189 members</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <strong>Entrepreneurs</strong>
+                                <span class="badge badge-primary float-right">127 members</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <strong>Healthcare</strong>
+                                <span class="badge badge-primary float-right">98 members</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <strong>Education</strong>
+                                <span class="badge badge-primary float-right">156 members</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Stories -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Success Stories</h3>
+                    </div>
+                    <div class="card-body">
+                        <h6><strong>From Graduate to CEO</strong></h6>
+                        <p class="text-muted small">How Ravi Patel built a million-dollar startup...</p>
+                        <hr>
+                        <h6><strong>Career Transformation</strong></h6>
+                        <p class="text-muted small">Moving from IT to Healthcare: A journey of passion...</p>
+                        <hr>
+                        <button class="btn btn-primary btn-block">Read More Stories</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -17,7 +17,7 @@ from django.urls import path
 
 from main_app.EditResultView import EditResultView
 
-from . import hod_views, staff_views, student_views, views
+from . import hod_views, alumni_views, staff_views, student_views, views
 
 urlpatterns = [
     path("",views.home, name = 'home'),
@@ -131,5 +131,17 @@ urlpatterns = [
          name="student_view_notification"),
     path('student/view/result/', student_views.student_view_result,
          name='student_view_result'),
+
+# alumnis
+
+
+    path('alumni/home/', alumni_views.alumni_home, name='alumni_home'),
+    path('alumni/profile/', alumni_views.alumni_profile, name='alumni_profile'),
+    path('alumni/jobs/', alumni_views.alumni_jobs, name='alumni_jobs'),
+    path('alumni/events/', alumni_views.alumni_events, name='alumni_events'),
+    path('alumni/network/', alumni_views.alumni_network, name='alumni_network'),
+    path('alumni/donations/', alumni_views.alumni_donations, name='alumni_donations'),
+    path('alumni/feedback/', alumni_views.alumni_feedback, name='alumni_feedback'),
+
 
 ]

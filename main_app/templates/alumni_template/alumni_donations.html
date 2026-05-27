@@ -1,0 +1,219 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Column: Donation Form -->
+            <div class="col-md-8">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Make a Contribution</h3>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="donationType">Contribution Type</label>
+                                <select class="form-control" id="donationType" required>
+                                    <option value="">-- Select Type --</option>
+                                    <option value="scholarship">Scholarship Fund</option>
+                                    <option value="infrastructure">Infrastructure Development</option>
+                                    <option value="research">Research & Development</option>
+                                    <option value="sports">Sports & Cultural Activities</option>
+                                    <option value="general">General Fund</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="amount">Contribution Amount</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">₹</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="amount" placeholder="Amount" min="1" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="frequency">Contribution Frequency</label>
+                                <select class="form-control" id="frequency" required>
+                                    <option value="once">One Time</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="quarterly">Quarterly</option>
+                                    <option value="annual">Annual</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="paymentMethod">Payment Method</label>
+                                <select class="form-control" id="paymentMethod" required>
+                                    <option value="">-- Select Payment Method --</option>
+                                    <option value="creditcard">Credit Card</option>
+                                    <option value="debitcard">Debit Card</option>
+                                    <option value="netbanking">Net Banking</option>
+                                    <option value="upi">UPI</option>
+                                    <option value="cheque">Cheque</option>
+                                    <option value="wire">Wire Transfer</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="anonymousDonation">
+                                    <input type="checkbox" id="anonymousDonation" name="anonymous">
+                                    Make this an anonymous contribution
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message (Optional)</label>
+                                <textarea class="form-control" id="message" rows="3" placeholder="Any message or dedication..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Info & Impact -->
+            <div class="col-md-4">
+                <!-- Impact Summary -->
+                <div class="card card-dark card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Your Impact</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-box mb-3 bg-light">
+                            <span class="info-box-icon bg-primary"><i class="fas fa-graduation-cap"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Scholarships Awarded</span>
+                                <span class="info-box-number">2,450+</span>
+                            </div>
+                        </div>
+                        <div class="info-box mb-3 bg-light">
+                            <span class="info-box-icon bg-success"><i class="fas fa-building"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Projects Funded</span>
+                                <span class="info-box-number">35+</span>
+                            </div>
+                        </div>
+                        <div class="info-box mb-3 bg-light">
+                            <span class="info-box-icon bg-warning"><i class="fas fa-users"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Active Contributors</span>
+                                <span class="info-box-number">8,200+</span>
+                            </div>
+                        </div>
+                        <div class="info-box bg-light">
+                            <span class="info-box-icon bg-danger"><i class="fas fa-heart"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total Raised</span>
+                                <span class="info-box-number">₹5.2 Cr+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fund Details -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Popular Funds</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6><strong>Scholarship Fund</strong></h6>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"></div>
+                            </div>
+                            <small class="text-muted">₹3.9 Cr of ₹5 Cr goal</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6><strong>Infrastructure</strong></h6>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%"></div>
+                            </div>
+                            <small class="text-muted">₹1.2 Cr of ₹2 Cr goal</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6><strong>Research Fund</strong></h6>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 45%"></div>
+                            </div>
+                            <small class="text-muted">₹0.45 Cr of ₹1 Cr goal</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tax Benefits -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Tax Benefits</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="small">Your contribution qualifies for tax benefits under Section 80G of the Income Tax Act.</p>
+                        <p class="small"><strong>Exemption Certificate:</strong> Will be issued within 15 days of confirmation.</p>
+                        <button class="btn btn-primary btn-block btn-sm">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Contributions -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Your Contribution History</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Certificate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-12-15</td>
+                                    <td>Scholarship Fund</td>
+                                    <td>₹25,000</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td><button class="btn btn-primary btn-sm">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-10</td>
+                                    <td>General Fund</td>
+                                    <td>₹10,000</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td><button class="btn btn-primary btn-sm">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2024-03-20</td>
+                                    <td>Infrastructure</td>
+                                    <td>₹50,000</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                    <td><button class="btn btn-primary btn-sm">Download</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

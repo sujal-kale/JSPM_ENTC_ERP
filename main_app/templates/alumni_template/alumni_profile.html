@@ -1,0 +1,114 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Profile Card -->
+                <div class="card card-dark card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle" src="{% static 'plugins/jquery/images/default-avatar.png' %}" alt="User profile picture">
+                        </div>
+                        <h3 class="profile-username text-center">{{ user.first_name }} {{ user.last_name }}</h3>
+                        <p class="text-muted text-center">{{ user.email }}</p>
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>Registration Number</b> <a class="float-right">N/A</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Graduation Year</b> <a class="float-right">N/A</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Current Position</b> <a class="float-right">N/A</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Profile Form -->
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">{{page_title}}</h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="First Name" value="{{ user.first_name }}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" value="{{ user.last_name }}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" value="{{ user.email }}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registrationNo">Registration Number</label>
+                                <input type="text" class="form-control" id="registrationNo" placeholder="Registration Number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="graduationYear">Graduation Year</label>
+                                <input type="text" class="form-control" id="graduationYear" placeholder="YYYY">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="course">Course/Degree</label>
+                                <input type="text" class="form-control" id="course" placeholder="Your Course">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="currentPosition">Current Position</label>
+                                <input type="text" class="form-control" id="currentPosition" placeholder="Job Title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="currentCompany">Current Company</label>
+                                <input type="text" class="form-control" id="currentCompany" placeholder="Company Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" id="country" placeholder="Country">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="linkedIn">LinkedIn Profile</label>
+                                <input type="url" class="form-control" id="linkedIn" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio">About Me</label>
+                                <textarea class="form-control" id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
