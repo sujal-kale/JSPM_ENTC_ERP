@@ -291,7 +291,7 @@ def edit_staff(request, staff_id):
 
 def edit_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
-    form = StudentForm(request.POST or None, instance=student)
+    form = StudentForm(request.POST or None, request.FILES or None, instance=student)
     context = {
         'form': form,
         'student_id': student_id,
@@ -311,7 +311,8 @@ def edit_student(request, student_id):
             passport = request.FILES.get('profile_pic') or None
             try:
                 user = CustomUser.objects.get(id=student.admin.id)
-                if passport != None:
+                # if passport != None:
+                if passport:
                     fs = FileSystemStorage()
                     filename = fs.save(passport.name, passport)
                     passport_url = fs.url(filename)
@@ -334,8 +335,7 @@ def edit_student(request, student_id):
                 messages.error(request, "Could Not Update " + str(e))
         else:
             messages.error(request, "Please Fill Form Properly!")
-    else:
-        return render(request, "hod_template/edit_student_template.html", context)
+    return render(request, "hod_template/edit_student_template.html", context)
 
 
 def edit_course(request, course_id):
