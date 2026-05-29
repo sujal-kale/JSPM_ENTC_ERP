@@ -20,6 +20,9 @@ from .models import (
 def home(request):
     return render(request, 'main_app/home.html')
 
+def faculty(request):
+    return render(request, 'main_app/faculty.html')
+
 def login_page(request):
     if request.user.is_authenticated:
         if request.user.user_type == '1':
