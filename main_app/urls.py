@@ -22,6 +22,8 @@ from . import hod_views, alumni_views, staff_views, student_views, views
 urlpatterns = [
     path("",views.home, name = 'home'),
     path("faculty/", views.faculty, name='faculty'),
+    path("faculty/SMHambarde", views.SMHambarde, name='SMHambarde'),
+    path("alumni/", views.alumni, name='alumni'),
     path("login/", views.login_page, name='login_page'),
     path("register/", views.register, name='register'),
     path("get_attendance", views.get_attendance, name='get_attendance'),

@@ -1,0 +1,151 @@
+{% load static %}
+
+<style>
+    :root {
+        --primary-color: #007bff;
+        --secondary-color: #003366;
+        --tertiary-color: #ffc107;
+        --font-family: 'Roboto', sans-serif;
+
+        --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --border-radius: 10px;
+    }
+
+    /* Header Styles */
+    header {
+        background-color: var(--secondary-color);
+        color: white;
+        width: 100%;
+        box-shadow: var(--card-shadow);
+        font-family: var(--font-family);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 80px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .logo img {
+        height: 50px;
+        width: auto;
+    }
+
+    .logo span {
+        max-width: 320px;
+        line-height: 1.3;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 5px;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 14px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        display: block;
+        font-size: 0.95rem;
+    }
+
+    nav ul li a:hover {
+        background-color: var(--tertiary-color);
+        color: #000;
+    }
+
+    /* Mobile */
+    @media (max-width: 992px) {
+        .header-content {
+            flex-direction: column;
+            padding: 15px 0;
+            gap: 15px;
+        }
+
+        .logo {
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .logo span {
+            max-width: 100%;
+        }
+
+        nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        nav ul li {
+            width: 100%;
+        }
+
+        nav ul li a {
+            text-align: center;
+        }
+    }
+
+
+    header {
+    background-color: #003366 !important;
+}
+
+header * {
+    color: white;
+}
+</style>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+
+            <div class="logo">
+                <img src="{% static 'main_app/images/JSCOE_logo.png' %}" alt="JSCOE Logo">
+                <span>Jayawantrao Sawant College Of Engineering</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'faculty' %}">Faculty</a></li>
+                    <li><a href="{% url 'alumni' %}">Alumni</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login_page' %}">Login</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</header>

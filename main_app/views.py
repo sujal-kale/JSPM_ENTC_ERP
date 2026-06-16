@@ -23,6 +23,12 @@ def home(request):
 def faculty(request):
     return render(request, 'main_app/faculty.html')
 
+def SMHambarde(request):
+    return render(request, 'main_app/SMHambarde.html')
+
+def alumni(request):
+    return render(request, 'main_app/alumni.html')
+
 def login_page(request):
     if request.user.is_authenticated:
         if request.user.user_type == '1':

@@ -61,6 +61,9 @@ class LoginCheckMiddleWare(MiddlewareMixin):
                 reverse('user_login'),
                 reverse('home'),
                 reverse('register'),
+                reverse('faculty'),
+                reverse('SMHambarde'),
+                reverse('alumni'),
             ]
 
             if (
